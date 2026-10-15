@@ -2,6 +2,14 @@ const Customer = require("../models/customer.model");
 const bcrypt = require("bcrypt");
 const generateToken = require("../utils/generateToken");
 
+const isProduction = process.env.NODE_ENV === "production";
+const authCookieOptions = {
+  httpOnly: true,
+  secure: isProduction,
+  sameSite: isProduction ? "none" : "lax",
+  maxAge: 24 * 60 * 60 * 1000
+};
+
 const register = async(req,res)=>{
   try{
     const{ fullName, email, password, phone } = req.body;
@@ -79,10 +87,7 @@ const login = async(req, res)=>{
 
     const token = generateToken(customer._id);
 
-    res.cookie("token", token,{
-      httpOnly: true,
-      maxAge: 24 * 60 * 60 * 1000
-    });
+    res.cookie("token", token, authCookieOptions);
 
     res.json({
       success: true,
@@ -121,7 +126,8 @@ const getMe = async(req, res)=>{
 
 
 const logout = async(req, res)=>{
-  res.clearCookie("token");
+  const { maxAge, ...clearCookieOptions } = authCookieOptions;
+  res.clearCookie("token", clearCookieOptions);
 
   res.json({
     success: true,

@@ -1,7 +1,6 @@
 const dotenv = require("dotenv");
 
-// dotenv must load before any module that reads process.env at require time,
-// otherwise config/razorpay.js is constructed with undefined keys.
+// Load environment variables before modules that read them during import.
 dotenv.config();
 
 const express = require("express");
@@ -15,14 +14,33 @@ const cartRoutes = require("./routes/cart.routes");
 const orderRoutes = require("./routes/order.routes");
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+const allowedOrigins = [
+  "http://localhost:5173",
+  ...(process.env.FRONTEND_URL || "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean)
+];
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Origin not allowed by CORS"));
+    },
     credentials: true
   })
 );
 app.use(express.json());
 app.use(cookieParser());
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ success: true, message: "ShopKart API is running" });
+});
 
 app.use("/customers", customerRoutes);
 app.use("/products", productRoutes);
@@ -34,10 +52,11 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB is connected");
-    app.listen(process.env.PORT, () => {
-      console.log(`Server running, the port is ${process.env.PORT}`);
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
     });
   })
   .catch((error) => {
-    console.log("MongoDB connection failed");
+    console.error("MongoDB connection failed:", error.message);
+    process.exit(1);
   });
