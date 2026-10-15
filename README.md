@@ -189,7 +189,7 @@ Start the backend first.
 
 ```bash
 cd backend
-npm run dev
+node index.js
 ```
 
 The backend uses Node's watch mode. Alternatively, use `npm start` to run it without watch mode.
