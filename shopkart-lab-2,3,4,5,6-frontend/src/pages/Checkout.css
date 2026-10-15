@@ -1,0 +1,252 @@
+.checkout-page {
+    min-height: 100vh;
+    background: #f5f4f0;
+    color: #171717;
+}
+
+.checkout-container {
+    padding: 48px 6%;
+}
+
+.checkout-header {
+    margin-bottom: 42px;
+}
+
+.checkout-header h1 {
+    font-size: 52px;
+    line-height: 0.95;
+    letter-spacing: -2.5px;
+    font-weight: 600;
+}
+
+.checkout-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 56px;
+    align-items: start;
+}
+
+.checkout-details h2,
+.checkout-summary h2 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}
+
+/* Form */
+
+.checkout-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 24px;
+    max-width: 620px;
+}
+
+.checkout-field:nth-child(3) {
+    grid-column: 1 / -1;
+}
+
+.checkout-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #777;
+}
+
+.checkout-field input {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid #cfcfcf;
+    background: transparent;
+    font-size: 15px;
+    outline: none;
+    color: #171717;
+    border-radius: 0;
+}
+
+.checkout-field input:focus {
+    border-bottom-color: #171717;
+}
+
+.checkout-field input[aria-invalid="true"] {
+    border-bottom-color: #b3261e;
+}
+
+.checkout-field-error {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #b3261e;
+}
+
+.checkout-submit {
+    grid-column: 1 / -1;
+    margin-top: 12px;
+    padding: 15px 20px;
+    border: none;
+    background: #171717;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.checkout-submit:hover:enabled {
+    background: #333;
+}
+
+.checkout-submit:disabled {
+    background: #d9d9d5;
+    color: #8a8a86;
+    cursor: not-allowed;
+}
+
+.checkout-error {
+    margin-bottom: 8px;
+    padding: 12px 14px;
+    border: 1px solid #b3261e;
+    color: #b3261e;
+    font-size: 13px;
+}
+
+.checkout-error-detail {
+    margin-bottom: 24px;
+    font-size: 12px;
+    color: #888;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Summary */
+
+.checkout-summary {
+    position: sticky;
+    top: 24px;
+    border-top: 1px solid #171717;
+    padding-top: 22px;
+}
+
+.checkout-summary-items {
+    margin-bottom: 8px;
+}
+
+.checkout-summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 11px 0;
+    font-size: 14px;
+}
+
+.checkout-summary-name {
+    color: #171717;
+}
+
+.checkout-summary-qty {
+    margin-top: 3px;
+    font-size: 12px;
+    color: #888;
+}
+
+.checkout-summary-price {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.checkout-summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid #d8d7d2;
+    margin-top: 10px;
+    padding-top: 18px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.checkout-summary-note {
+    margin-top: 14px;
+    font-size: 11px;
+    color: #999;
+}
+
+/* States */
+
+.checkout-state {
+    padding: 60px 6%;
+    color: #777;
+    font-size: 14px;
+}
+
+.checkout-state-block {
+    padding: 60px 6% 90px;
+    max-width: 460px;
+}
+
+.checkout-state-block h2 {
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.checkout-state-block p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 26px;
+}
+
+.checkout-primary {
+    padding: 13px 20px;
+    border: none;
+    background: #171717;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.checkout-primary:hover {
+    background: #333;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .checkout-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .checkout-summary {
+        position: static;
+    }
+
+    .checkout-header h1 {
+        font-size: 44px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .checkout-container {
+        padding: 36px 22px;
+    }
+
+    .checkout-header {
+        margin-bottom: 30px;
+    }
+
+    .checkout-header h1 {
+        font-size: 42px;
+    }
+
+    .checkout-form {
+        grid-template-columns: 1fr;
+    }
+}

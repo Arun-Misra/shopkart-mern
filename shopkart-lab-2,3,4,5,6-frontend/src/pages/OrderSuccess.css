@@ -1,0 +1,120 @@
+.order-success-page {
+    min-height: 100vh;
+    background: #f5f4f0;
+    color: #171717;
+}
+
+.order-success-container {
+    padding: 48px 6%;
+}
+
+.order-success-header {
+    margin-bottom: 42px;
+}
+
+.order-success-header h1 {
+    font-size: 52px;
+    line-height: 0.95;
+    letter-spacing: -2.5px;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.order-success-header p {
+    color: #666;
+    font-size: 15px;
+}
+
+.order-success-meta {
+    max-width: 620px;
+    border-top: 1px solid #d8d7d2;
+}
+
+.order-success-meta > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid #d8d7d2;
+}
+
+.order-success-meta dt {
+    font-size: 13px;
+    color: #777;
+}
+
+.order-success-meta dd {
+    font-size: 15px;
+    font-weight: 500;
+    text-align: right;
+    word-break: break-all;
+}
+
+.order-success-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid #171717;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.order-success-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+}
+
+.order-success-button {
+    padding: 13px 20px;
+    border: 1px solid #171717;
+    background: #171717;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.order-success-button:hover {
+    background: #333;
+}
+
+.order-success-button.is-secondary {
+    background: transparent;
+    color: #171717;
+}
+
+.order-success-button.is-secondary:hover {
+    background: #171717;
+    color: white;
+}
+
+.order-success-state {
+    padding: 40px 0;
+    color: #777;
+    font-size: 14px;
+}
+
+.order-success-state-block {
+    padding: 40px 0;
+    max-width: 460px;
+}
+
+.order-success-state-block h2 {
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.8px;
+}
+
+@media (max-width: 600px) {
+    .order-success-container {
+        padding: 36px 22px;
+    }
+
+    .order-success-header h1 {
+        font-size: 38px;
+    }
+}

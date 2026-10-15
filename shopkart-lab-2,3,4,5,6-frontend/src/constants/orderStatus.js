@@ -1,0 +1,3 @@
+const STATUS_FLOW = ["PLACED", "CONFIRMED", "SHIPPED", "DELIVERED"];
+
+export { STATUS_FLOW };
