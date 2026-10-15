@@ -38,15 +38,25 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-app.get("/health", (req, res) => {
+const healthCheck = (req, res) => {
   res.status(200).json({ success: true, message: "ShopKart API is running" });
-});
+};
 
+app.get("/health", healthCheck);
+app.get("/api/health", healthCheck);
+
+// Keep the original paths for local development and support Vercel's /api rewrite.
 app.use("/customers", customerRoutes);
 app.use("/products", productRoutes);
 app.use("/wishlist", wishlistRoutes);
 app.use("/cart", cartRoutes);
 app.use("/orders", orderRoutes);
+
+app.use("/api/customers", customerRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/wishlist", wishlistRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/orders", orderRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)
